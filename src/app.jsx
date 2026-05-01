@@ -419,13 +419,14 @@ function DirectoryPage() {
   const regions = [...new Set(DIRECTORY.map(d => d.region))].sort();
 
   const filtered = DIRECTORY.filter(item => {
-    if (category !== "all" && item.category !== category) return false;
-    if (region !== "all" && item.region !== region) return false;
-    if (search && !item.name.toLowerCase().includes(search.toLowerCase()) && !item.description.toLowerCase().includes(search.toLowerCase())) return false;
-    return true;
-  });
+  if (category !== "all" && item.category !== category) return false;
+  if (region !== "all" && item.region !== region) return false;
+  if (search && !item.name.toLowerCase().includes(search.toLowerCase()) && !item.description.toLowerCase().includes(search.toLowerCase())) return false;
+  return true;
+});
 
-   const rest = filtered.filter(d => !d.featured);
+const featured = filtered.filter(d => d.featured);
+const rest = filtered.filter(d => !d.featured);
 
   return (
     <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 24px" }}>
