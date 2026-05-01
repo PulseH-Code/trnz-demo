@@ -69,7 +69,6 @@ function Logo({ onClick }) {
 }
 
 function Nav({ page, setPage }) {
-  const [menuOpen, setMenuOpen] = useState(false);
   const links = [
     { id: "home", label: "Home" },
     { id: "calendar", label: "Race Calendar" },
@@ -426,8 +425,7 @@ function DirectoryPage() {
     return true;
   });
 
-  const featured = filtered.filter(d => d.featured);
-  const rest = filtered.filter(d => !d.featured);
+   const rest = filtered.filter(d => !d.featured);
 
   return (
     <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 24px" }}>
